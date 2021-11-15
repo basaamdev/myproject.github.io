@@ -1,0 +1,706 @@
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<style type="text/css">
+        .menusearch {
+            display: flex;
+            height: 141px;
+            width: 98%;
+            background-color: #3f51b5db;
+            flex-direction: revert;
+            position: fixed;
+            top: 0%;
+            /* padding: 27px; */
+            z-index: 1212;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 8px;
+            z-index: 222;
+        }
+
+        .tags {
+            /* border: 2px solid blue; */
+            height: 88px;
+            width: 40%;
+            z-index: 188;
+            background-color: #ffffff6b;
+            align-items: flex-start;
+        }
+
+        .search {
+            border: none;
+            margin: 0;
+            padding: 0;
+            background: none;
+            margin: 2px;
+            background-color: white;
+            height: 100%;
+            width: 44%;
+            border: 2px solid black;
+        }
+
+        .menusearch2 {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 39%; /* background-color: #ffffff; */
+        }
+
+        .main {
+            display: inline-block;
+            background: none;
+            top: 192px;
+        }
+
+        body {
+            background-color: #ffffff;
+        }
+
+        #cx {
+            height: 100%;
+            width: 53px;
+            background: none;
+        }
+
+        .frame {
+            height: 70%;
+            width: 74%;
+            position: fixed;
+            z-index: 88;
+            /* display: none; */
+            left: 23%;
+            top: 23%;
+        }
+
+        iframe {
+            height: 80%;
+            width: 80%;
+        }
+
+        .column1p {
+        width: 100%;
+        height: 100%;
+        }
+
+        .rownewsgenre {
+            height: 258px;
+            flex-direction: row;
+            overflow-x: scroll;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .rownewsgenrep {
+            color: black;
+            font-weight: 100;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin: 14px;
+            font-size: 26px;
+        }
+
+
+        .rowcountry {
+            height: 243px;
+            width: 100%;
+            flex-direction: row;
+            overflow-x: scroll;
+            justify-content: flex-start;
+            padding: 9px;
+        }
+
+        .rowcountryp {
+            color: black;
+            text-align: left;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin: 12px;
+            margin-top: 28px;
+            font-weight: 100;
+        }
+
+        .rowmenusearch {
+            height: 100%;
+            width: 40%;
+            flex-direction: row;
+        }
+
+        #country {
+            overflow-y: scroll;
+            height: 88px;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        button {
+            height: 28px;
+            width: 100%;
+            padding: 2px 8px;
+            margin: 2px 8px;
+            border: none;
+            background: none;
+            background-color: white;
+        }
+
+        #coulmn1 {
+    width: 22%;
+    height: 100%;
+}
+        .c1r0 {
+    height: 50%;
+    width: 100%;
+    display: none;
+}
+        .c1r1 {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+        .c1r2 {
+    flex-direction: row;
+}
+        #randomtags {
+        }
+        .c3r1 {width: 100%;}
+        .c3r2 {width: 100%;}
+
+        #coulmn2 {width: 53%;height: 100%;flex-direction: row;}
+        .c2r0 {height: 100%;width: 50%;display: inline-block;overflow-x: hidden;overflow-y: scroll;}
+
+            .c2r1 {height: 100%;width: 50%;display: inline-block;overflow-x: hidden;overflow-y: scroll;}
+            #coulmn3 {
+                height: 100%;
+                /* border: 2px solid red; */
+                width: 21%;
+            }
+
+            #search {width: 100%;}
+
+        .rowcountry0 {
+            height: 243px;
+            width: 100%;
+            flex-direction: row;
+            overflow-x: scroll;
+            justify-content: flex-start;
+            padding: 9px;
+        }
+
+        #selectedtags {height: 50%;display: inline-block;overflow-y: scroll;width: 100%;}
+
+        #selectedcountries {height: 50%;width: 100%;}
+		</style>
+</head>
+<body>
+	<!--
+	<div class="menu1">
+
+	  </div>
+
+	   -->
+    <div class="menusearch">
+        <div id="coulmn2">
+            <div id="c2r0" class="c2r0"></div>
+            <div id="c2r1" class="c2r1"></div>
+        </div> 
+        <div id="coulmn1">
+            <div class="c1r0" id="elementtags">
+                <div id="selectedtags"></div>
+                <div id="selectedcountries"></div>
+            </div>
+            <!--<div class="c1r1"><input id="search" value="" /></div>-->
+            <button id="ornasedgenre">genre + country</button>
+            <button id="customtagsbycountry">custom tags</button>
+        </div>
+        <div id="coulmn3">
+            <div class="c3r1">
+                <!-- all news by country-->
+                <button id="allcountry">by country</button>
+                <!-- all news by genre-->
+                <button id="allgenre">by genre</button>
+            </div>
+            <div class="c3r2">
+                <!-- all genre business politics, ignored tags plus selectected countires-->
+                
+                <!-- custom news genre tags customised by country rows with ingnored countries plus row 0 with countries-->
+
+
+            </div>
+        </div>
+    </div>
+
+	<div id="main" class="main">
+
+	</div>
+
+	<script>
+
+
+
+       
+
+		                                                                                                
+        var newsdata = [["House prices still rising but demand set to cool", "https://www.bbc.co.uk/news/business-59174582", "https://ichef.bbci.co.uk/news/976/cpsprodpb/7435/production/_119294792_house_prices_getty.jpg", "now", "homes", "economy", "uk", "all"],
+        ["The first British prime minister got the job because the King couldn’t speak English", "https://google.com", "facts.PNG", "politics", "past", "king", "all", "uk", "facts"],
+            ["AMD stock soars toward best day in 15 months after company wins Facebook business", "https://www.marketwatch.com/story/amd-stock-soars-toward-best-day-in-15-months-after-company-wins-facebook-business-11636398737", "https://images.mktw.net/im-312032?width=700&size=1.7777777777777777", "economy", "technology", "all", "business", "amd", "company", "america"],
+            ["Why more Brits are turning to food banks", "https://edition.cnn.com/interactive/2021/11/business/london-food-banks-cnnphotos/", "https://edition.cnn.com/interactive/2021/11/business/london-food-banks-cnnphotos/media/images/s_DA29E604526F54B580B57B674C3B5365EE5748DCC52974DE71A3808C31958EA9_1635375044923_1SOUPKITCHENS_00323.jpg", "food", "uk", "breaking", "economy", "all"],
+            ["SpaceX splashdown: Astronauts return home from six-month ISS mission", "https://edition.cnn.com/2021/11/08/tech/spacex-crew-2-dragon-splashdown-toilet-scn/index.html", "spacex.PNG", "November 9, 2021", "all", "space", "astronomy", "spacex", "america"],
+            ["Researchers uncover software flaws leaving medical devices vulnerable to hackers", "https://edition.cnn.com/2021/11/09/tech/medical-devices-vulnerable-to-hackers/index.html", "https://cdn.cnn.com/cnnnext/dam/assets/211108222128-hospital-corridor-stock-exlarge-169.jpg", "November 9, 2021", "cnn", "medical", "health", "all", "security", "technology", "america"],
+            ["Apple-1 computer goes on sale, with bids expected to reach $600,000", "https://edition.cnn.com/2021/11/09/tech/apple-1-computer-auction-scli-intl/index.html", "https://cdn.cnn.com/cnnnext/dam/assets/211109051444-01-chaffey-apple-1-auction-scli-intl-exlarge-169.jpg", "November 9, 2021", "cnn", "business", "all", "technology", "america"],
+            ["MARKETS", "https://money.cnn.com/data/markets/", "cnnmarketsdata.PNG", "live", "cnn", "intelligence", "stastics", "economy", "data", "all", "world", "market"],
+            ["World's largest astronomy museum set to open in Shanghai", "https://edition.cnn.com/style/article/shanghai-astronomy-museum-ennead-architects-scn/index.html", "https://dynaimage.cdn.cnn.com/cnn/q_auto,w_1263,c_fill,g_auto,h_711,ar_16:9/http%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F210707161904-01-shanghai-astronomy-museum.jpg", "12th July 2021", "cnn", "astronomy", "architecture", "china", "all"],
+            ["Myanmar is planning to reopen to tourism in early 2022. But who will go?","https://edition.cnn.com/travel/article/myanmar-tourism-reopening-coup-cmd-intl-hnk/index.html", "https://dynaimage.cdn.cnn.com/cnn/q_auto,w_218,c_fill,g_auto,h_122,ar_16:9/http%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F211025231323-bagan-temples-file-2020.jpg", "9th November 2021", "cnn", "tourism", "travel", "myanmar", "all", "covid", "corona", ],
+            ["Australia officially allows vaccinated residents to travel outside the country", "https://edition.cnn.com/travel/article/australia-end-travel-ban-vaccination-intl-hnk/index.html", "https://dynaimage.cdn.cnn.com/cnn/q_auto,w_1100,c_fill,g_auto,h_619,ar_16:9/http%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F211026231254-sydney-airport-file-2020.jpg","27th October 2021", "corona virus", "virus", "corona", "covid", "travel", "australia", "all"],
+            ["The most downloaded iOS apps of 2018", "https://edition.cnn.com/2018/12/04/tech/ios-most-popular-apps/index.html", "cnnsocialapps.PNG", "December 13, 2018", "data", "stastics", "intelligence", "all", "app", "apps", "mobile", "technology", "business", "world"],
+            ["CAN I TRAVEL TO SPAIN FROM THE UK? ALL THE RULES YOU NEED TO KNOW", "https://www.independent.co.uk/travel/news-and-advice/travel-requirements-spain-holiday-vaccine-passport-b1920686.html", "independanttravelspain.PNG", "15 September 2021", "spain", "america", "travel", "covid", "all", "uk", "tourism"],
+            ["What are the rules to travelling to Greece", "https://www.independent.co.uk/travel/news-and-advice/greece-travel-rules-amber-update-uk-b1920715.html", "independanttravelgreece.PNG", "15 September 2021", "greece", "travel", "corona virus", "virus", "corona", "covid", "all", "independent", "infonews"],
+            ["Manchester city guide: where to eat, drink, shop and stay in the ‘world’s third best city", "https://www.independent.co.uk/travel/48-hours-in/manchester-city-guide-best-hotels-restaurants-b1950749.html", "https://static.independent.co.uk/2021/11/03/15/ManchesterRecoveryCampaign-32.jpg?width=990&auto=webp&quality=75", "4/11/2021", "uk", "manchester", "all", "travel", "tourism", "independent"],
+            ["Genoa city guide: Where to stay, eat, drink and shop in this affordable Italian charmer", "https://www.independent.co.uk/travel/48-hours-in/genoa-city-guide-italy-break-b1938455.html", "https://static.independent.co.uk/2021/10/14/15/iStock-1179588168.jpg?width=990&auto=webp&quality=75", " 22 October 2021", "italy", "tourism", "independant", "all"],
+            ["Republican posts anime video of himself killing AOC and attacking Joe Biden", "https://metro.co.uk/2021/11/09/republican-posts-anime-video-killing-aoc-attacking-joe-biden-15574073/", "https://metro.co.uk/wp-content/uploads/2021/11/PRC_209421966.jpg?quality=90&strip=all&zoom=1&resize=644%2C338", "Tuesday 9 Nov 2021 11:33 pm", "america", "japan", "entertainment ", "politics", "all", ""],
+            ["Earth ‘on course to heat up by 2.4°C’ wiping out millions of people", "https://metro.co.uk/2021/11/10/cop26-world-set-for-2-4c-of-global-warming-climate-action-tracker-15575423/", "https://metro.co.uk/wp-content/uploads/2021/11/PRC_209519690.jpg?quality=90&strip=all&zoom=1&resize=644%2C337", "10 Nov 2021 10:17 am", "environment", "world", "meeting", "future", "all"],
+            ["Trading platform Robinhood is hacked, exposing over 7 million customers’ data", "https://metro.co.uk/2021/11/09/trading-platform-robinhood-hacked-exposing-over-7-million-users-data-15571012/", "https://metro.co.uk/wp-content/uploads/2021/11/LogoNov82021-ddfb.png?quality=90&strip=all&zoom=1&resize=644%2C362", "9 Nov 2021 2:25 pm", "all", "trade", "america", "hack", "security", "technology", "past", "finance", "news"],
+            ["These are the car tech trends we will see take off in the future", "https://metro.co.uk/2021/11/05/these-are-the-car-tech-trends-we-will-see-take-off-in-the-future-15544465/", "https://metro.co.uk/wp-content/uploads/2021/11/PRC_208459434.jpg?quality=90&strip=all&zoom=1&resize=644%2C338", "Friday 5 Nov 2021 2:16 pm", "metro", "news", "agency", "science", "car", "transport", "all", "future", "world"],
+            ["Supreme Court blocks £3 billion pound legal action against Google", "https://metro.co.uk/2021/11/10/supreme-court-blocks-billion-pound-legal-action-against-google-15575356/", "https://metro.co.uk/wp-content/uploads/2016/11/ad_226203533.jpg?quality=90&strip=all&zoom=1&resize=644%2C363", "Wednesday 10 Nov 2021 10:07 am", "metro", "america", "law", "technology", "all", "", ""],
+            ["No deal Brexit BACK on! Bombshell warning from Lords as Article 16 tensions explode", "https://www.express.co.uk/news/uk/1519344/Brexit-no-deal-warning-House-Lords-Northern-Ireland-protocol-Article-16-row-latest-Frost", "https://cdn.images.express.co.uk/img/dynamic/139/285x190/1519142_1.webp", "Wed, Nov 10, 2021", "express", "uk", "brexit", "ireland", "law", "politics", "all"],
+            ["New travel rules introduced for tourists arriving in the UK - latest changes", "https://www.express.co.uk/travel/articles/1519178/uk-travel-rules-vaccination-testing-latest", "https://cdn.images.express.co.uk/img/dynamic/25/285x169/1519178_1.webp", " Wed, Nov 10, 2021", "express", "uk", "travel", "all", "law", "corona virus", "virus", "corona", "covid"],
+            ["Qatar Airways Holidays offers amazing 30 percent off deals to British tourists- how to get", "https://www.express.co.uk/travel/articles/1518798/qatar-airways-holidays-30-percent-off-deal-british-people-maldives", "expresstravelqatar.PNG", "Tue, Nov 9, 2021", "express", "travel", "qatar", "uk", "all", "corona virus", "virus", "corona", "covid", "news", "productivity"],
+            ["British Airways vows to bring back BA ‘golden age’ with new rules - but no free G&T", "https://www.express.co.uk/travel/articles/1518728/british-airways-ba-baggage-allowance-seat-room-refreshment", "https://cdn.images.express.co.uk/img/dynamic/25/590x/TRAVEL-British-Airways-1518728.webp?r=1636460613886", "Tue, Nov 9, 2021", "businesss", "travel", "airport", "uk", "all", "corona virus", "virus", "corona", "covid", "news"],
+            ["Visit Blackpool next month for the greatest free light show on Earth", "https://www.express.co.uk/travel/activity/1483528/blackpool-light-show-setember-2021", "https://cdn.images.express.co.uk/img/dynamic/133/285x190/1483528_1.webp", "Sun, Aug 29, 2021", "express", "tourism", "travel", "uk", "blackpool", "city", "all"],
+            ["Flights to USA resume as international borders reopen to fully vaccinated foreigners", "https://www.express.co.uk/travel/articles/1518146/US-international-borders-open-flights-resume-fully-vaccinated", "https://cdn.images.express.co.uk/img/dynamic/25/590x/British-Airways-plane-takes-off-1518146.webp?r=1636374403520", "Mon, Nov 8, 2021", "express", "uk", "america", "travel", "all", "corona virus", "virus", "corona", "covid", "tourism"],
+            ["UN: 'Phasing down' coal will affect poorer countries", "https://www.bbc.co.uk/news/topics/cmj34zmw7xwt/united-nations", "bbcunworldpolitics1.PNG", "14 Nov", "bbc", "un", "world", "all", "politics", "COP26", "environment", "energy", "coal"],
+            ["Joe Biden and Xi Jinping: What they want from talks", "https://www.bbc.co.uk/news/world-us-canada-59258375", "https://ichef.bbci.co.uk/news/976/cpsprodpb/D271/production/_121537835_gettyimages-453444607.jpg", "15/11/21", "bbc", "china", "america", "politics", "all", "news"],
+            ["Iron ore price slump could cause $3b blackhole in Australia’s budget", "https://www.news.com.au/finance/economy/australian-economy/iron-ore-price-slump-could-cause-3b-blackhole-in-australias-budget/news-story/0e36c1f4f43f147174decaeb6e09ed54", "australiachinaeco.PNG", "November 12, 2021", "news.com.au", "australia", "trade", "china", "economy", "all"],
+            ["Ominous sign in Aussie housing market", "https://www.news.com.au/finance/economy/australian-economy/will-rising-interest-rates-mean-house-prices-still-continue-to-rise/news-story/f29819e22304d552a4306590d73a8331", "https://content.api.news/v3/images/bin/68567af80e28e8a168498fa1fb0c000d?width=1024", "November 12, 2021", "news.com/au", "australia", "market", "house", "homes", "all"],
+            ["Sheikh Joaan honours athletes at QOC Sports Excellence Awards 2021", "https://thepeninsulaqatar.com/article/15/11/2021/sheikh-joaan-honours-athletes-at-qoc-sports-excellence-awards-2021", "https://thepeninsulaqatar.com/get/maximage/20211115_1636957159-983.jpeg", "15 Nov 2021 - 09:19", "thepeninsulaqatar.com", "qatar", "prince", "auhtority", "sports"],
+            ["Energy Minister meets European Commissioner for Energy", "https://thepeninsulaqatar.com/article/15/11/2021/energy-minister-meets-european-commissioner-for-energy", "https://thepeninsulaqatar.com/get/maximage/20211115_1636967460-517.jpg", " 15 Nov 2021", "thepeninsulaqatar.com", "qatar", "eu", "meet", "energy", ""],
+            ["", "", "", "", "", "", "", "", ""],
+            ["", "", "", "", "", "", "", "", ""],
+            ["", "", "", "", "", "", "", "", ""],
+            ["", "", "", "", "", "", "", "", ""],
+            ["", "", "", "", "", "", "", "", ""],
+            ["", "", "", "", "", "", "", "", ""],
+            ["", "", "", "", "", "", "", "", ""],
+        ];
+
+        var countries = ["world", "america", "australia", "china", "japan", "greece", "myanmar", "qatar", "spain", "uk"];
+       
+		var newsgenre = ["politics", "economy", "market", "business", "science", "space", "technology", "health", "travel", "tourism", "finance", "environment", "security"];
+		
+        var clickedcountries = []
+        var tagscountryrows = [];
+        var tagscountryrowscheck = "";
+        var tags = [];
+        var selectedtagselement = ["economy", "business"];
+
+        function selectedtagssort() {
+         //   alert("thistags"+tags)
+          //  alert("selectedtagselement" + selectedtagselement)
+            selectedtagselement = [];
+           // alert("selectedtagselement" + selectedtagselement)
+            
+            for (a = 0; a <= tags.length + -1; a++) {
+                for (b = 0; b <= countries.length + -1; b++) {
+                    if (tags[a] == countries[b]) {
+                        break;
+                    }
+
+                    if (b == countries.length + -1 && tags[a] !== countries[b]) {
+                     //   alert("bcountrieslength" + tags)
+                        selectedtagselement[selectedtagselement.length] = tags[a];
+                    }
+                }
+            }
+            
+
+           // alert("selec" + selectedtagselement)
+            document.getElementById("selectedtags").innerHTML = ""
+            for (c = 0; c <= selectedtagselement.length + -1; c++) {
+                var sc = document.createElement("p");
+                sc.innerText = selectedtagselement[c];
+                sc.style.display = "inline-block";
+                document.getElementById("selectedtags").appendChild(sc);
+            }
+            selectedtagselement = [];
+        }
+
+        function selectedcountriessort() {
+            document.getElementById("selectedcountries").innerHTML = ""
+            for (c = 0; c <= clickedcountries.length + -1; c++) {
+                var sc = document.createElement("p");
+                sc.innerText = clickedcountries[c];
+                sc.style.display = "inline-block";
+                document.getElementById("selectedcountries").appendChild(sc);
+            }
+        }
+
+
+        function countrytags() {
+
+            for (c = 0; c <= countries.length + -1; c++) {
+                var sc = document.createElement("p");
+                sc.innerText = countries[c];
+                sc.style.display = "inline-block";
+                sc.onclick = function () {
+                
+                    this.style.backgroundColor = "white"
+                    //alert(this.innerText)
+                    tags[tags.length] = this.innerText;
+                    clickedcountries[clickedcountries.length] = this.innerText;
+                  //  alert(tags)
+                    selectedtagssort()
+                    selectedcountriessort()
+                }
+                document.getElementById("c2r0").appendChild(sc);
+            }
+        }
+        countrytags()
+
+        function newstags() {
+
+            for (t = 0; t <= newsgenre.length + -1; t++) {
+                var sc = document.createElement("p");
+                sc.innerText = newsgenre[t];
+                sc.style.display = "inline-block";
+                sc.onclick = function () {
+                    this.style.backgroundColor = "white"
+                  //  alert(this.innerText)
+                    tags[tags.length] = this.innerText;
+                  //  alert(tags)
+                    selectedtagssort()
+                    selectedcountriessort();
+                }
+                document.getElementById("c2r1").appendChild(sc);
+            }
+        }
+        newstags()
+
+
+        document.getElementById("allcountry").onclick = function () {
+            document.getElementById("main").innerHTML = "";
+            sortbyCountries()
+            sortalltagscountry()
+        }
+
+        document.getElementById("allgenre").onclick = function () {
+            document.getElementById("main").innerHTML = "";
+            sortbynewsgenre()
+            sortalltagsbygenre()
+        }
+
+        document.getElementById("ornasedgenre").onclick = function () {
+            document.getElementById("main").innerHTML = "";
+
+           
+            sortbynewsgenre(clickedcountries);
+            //sortallgenrebycountry()
+            sortnormalgenrepluscountry()
+        }
+
+        document.getElementById("customtagsbycountry").onclick = function () {
+            document.getElementById("main").innerHTML = "";
+
+            sortbytagsrow0()
+            sortbyCountries2()
+        }
+
+        
+
+      
+        //sort rows by country
+        function sortbyCountries() {
+            for (c = 0; c <= countries.length + -1; c++) {
+                var rowcountry = document.createElement("div");
+                var rowcountryp = document.createElement("h1");
+                rowcountryp.setAttribute("class", "rowcountryp");
+                rowcountryp.innerText = countries[c];
+                rowcountryp.onclick = function () {
+                    tags = ["all"]
+                    clicksortbytags = false;
+                    clickedsearchorganaisetagsbycountry = false;
+                    clickedonacountry = true;
+                    //alert(this.innerText)
+                    clickedcountry = this.innerText;
+                    main.innerHTML = "";
+                    sortbynewsgenre();
+                    xoz();
+                }
+                rowcountry.setAttribute("id", "rowcountry" + c);
+                rowcountry.setAttribute("class", "rowcountry");
+                document.getElementById("main").appendChild(rowcountryp)
+                document.getElementById("main").appendChild(rowcountry)
+            }
+        }
+
+
+       //sort rows by genre
+        function sortbynewsgenre(genrecountrty) {
+            for (c = 0; c <= newsgenre.length + -1; c++) {
+                var rownewsgenre = document.createElement("div");
+                var rownewsgenrep = document.createElement("h1");
+                rownewsgenre.setAttribute("class", "rownewsgenre");
+                rownewsgenrep.setAttribute("class", "rownewsgenrep");
+                rownewsgenrep.setAttribute("id", "rownewsgenrep" + c);
+                rownewsgenrep.innerText = newsgenre[c] + " + " + genrecountrty;
+                rownewsgenrep.onclick = function () {
+                    //alert(this.innerText)
+                    clickedcountry = this.innerText;
+                    //main.innerHTML = "";
+                }
+                rownewsgenre.setAttribute("id", "rownewsgenre" + c);
+                rownewsgenre.setAttribute("class", "rownewsgenre");
+                document.getElementById("main").appendChild(rownewsgenrep)
+                document.getElementById("main").appendChild(rownewsgenre)
+            }
+        }
+
+        //add tags
+        function addTxt(em, c, d, zx, zx2) {
+            var xyz = document.createElement("a");
+
+            xyz.setAttribute("class", "maintxt2")
+
+            xyz.setAttribute("href", c)
+            xyz.setAttribute("target", "_blank")
+
+            var column0 = document.createElement("div");
+            column0.setAttribute("class", "column0");
+            column0.style.backgroundImage = "url(" + d + ")";
+
+            var column1 = document.createElement("div");
+            column1.setAttribute("class", "column1");
+
+
+            var column1p = document.createElement("p");
+            column1p.setAttribute("class", "column1p");
+            column1p.innerText = em;
+
+
+            xyz.appendChild(column0)
+            xyz.appendChild(column1)
+            column1.appendChild(column1p)
+            //alert(em)
+            
+            zx2.appendChild(xyz)
+
+        }
+        
+        // sort tags all by country
+    function    sortalltagscountry() {
+            for (a = 0; a <= countries.length + -1; a++) {
+                for (b = 0; b <= newsdata.length + -1; b++) {
+                    for (c = 0; c <= newsdata[b].length + -1; c++) {
+                        if (countries[a] == newsdata[b][c]) {
+                            var elementcountry = document.getElementById("rowcountry" + parseInt(a));
+                            addTxt(newsdata[b][0], newsdata[b][1], newsdata[b][2], a, elementcountry)
+                        }
+                    }
+                }
+            }
+        }
+        //sort all tags by genres
+        function sortalltagsbygenre() {
+            for (a = 0; a <= newsgenre.length + -1; a++) {
+                for (b = 0; b <= newsdata.length + -1; b++) {
+                    for (c = 0; c <= newsdata[b].length + -1; c++) {
+                        if (newsgenre[a] == newsdata[b][c]) {
+                            var elementcountry = document.getElementById("rownewsgenre" + parseInt(a))
+                            addTxt(newsdata[b][0], newsdata[b][1], newsdata[b][2], a, elementcountry)
+                        }
+                    }
+                }
+            }
+        }
+
+
+        var countryrowfor = 0;
+        var clickcountriescheck = []
+        //if the news data has the clicked countries
+        //plus organaise by normal genres
+        // i have to loop through the news data
+        // and check if the news data have both  countries
+        function sortnormalgenrepluscountry() {          
+            for (a = 0; a <= newsdata.length + -1; a++) {
+                for (b = 0; b <= newsdata[a].length + -1; b++) {                  
+                        for (d = 0; d <= clickedcountries.length + -1; d++) {
+                            if (newsdata[a][b] == clickedcountries[d]) {
+                                clickcountriescheck[clickcountriescheck.length] = clickedcountries[d]; 
+                            }
+                        }                
+                }                           
+                for (c = 0; c <= clickcountriescheck.length + -1; c++) {                
+                    if (clickcountriescheck.length == clickedcountries.length) {                                     
+                        if (clickcountriescheck[c] == "" || clickcountriescheck[c] == null || clickcountriescheck[c] == undefined) {
+                            break;
+
+                        } else if (c == clickcountriescheck.length + -1) {                          
+                            for (e = 0; e <= newsdata[a].length + -1; e++) {
+                                for (f = 0; f <= newsgenre.length + -1; f++) {
+                                    if (newsdata[a][e] == newsgenre[f]) {
+                                        var elementcountry = document.getElementById("rownewsgenre" + parseInt(f))
+                                        addTxt(newsdata[a][0], newsdata[a][1], newsdata[a][2], a, elementcountry)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                clickcountriescheck = [];
+            }
+        }
+
+
+
+
+        //the rest of the functions here is for custom tags
+       
+
+        //row0 + country
+        //row1 + other countries
+
+       
+        
+        var itdidhaveit = [];
+        var c = 0;
+
+        //this function sorts out the row0 for custom tags
+        function sortbytagsrow0() {
+            for (c = 0; c <= 0; c++) {
+                var rowcountry = document.createElement("div");
+                var rowcountryp = document.createElement("h1");
+                rowcountryp.setAttribute("class", "rowcountryp");
+                rowcountryp.innerText = tags;
+                rowcountry.setAttribute("id", "rowtags0");
+                rowcountry.setAttribute("class", "rowcountry" + c);
+                document.getElementById("main").appendChild(rowcountryp)
+                document.getElementById("main").appendChild(rowcountry)
+            }
+        }
+        //this is for the rest of the countries rows
+        function sortbyCountries2() {
+            
+            
+            
+            sortcustomrowtags()
+            
+            sortcustombycountryrowtags();
+        }
+
+        function sortbycountriestagsrows(tagspara) {
+            for (c = 0; c <= countries.length + -1; c++) {
+                var rowcountry = document.createElement("div");
+                var rowcountryp = document.createElement("h1");
+                rowcountryp.setAttribute("class", "rowcountryp");
+                rowcountryp.innerText = countries[c] + " + " + tagspara;
+                rowcountry.setAttribute("id", "rowcountry" + c);
+                rowcountry.setAttribute("class", "rowcountry");
+                document.getElementById("main").appendChild(rowcountryp)
+                document.getElementById("main").appendChild(rowcountry)
+            }
+        }
+      
+        
+        
+        //this is for row0
+        function sortcustomrowtags() {
+                                                                                                               
+            for (a = 0; a <= newsdata.length + -1; a++) {
+               // console.log("row" + a)
+                for (b = 3; b <= newsdata[a].length + -1; b++) {                
+                    for (c=0; c <= tags.length + -1; c++) {
+                       // console.log("newsdataitem"+newsdata[a][b])
+                       // console.log("tags"+tags[c])
+                        if (newsdata[a][b] == tags[c]) {
+                            itdidhaveit[c] = tags[c]
+                            break;
+                        }
+                    }
+                }
+                // console.log(itdidhaveit)
+                if (itdidhaveit.length == tags.length) {
+
+                   // console.log(newsdata[a])
+                   // console.log(itdidhaveit)
+                    for (d = 0; d <= itdidhaveit.length + -1; d++) {
+                        if (itdidhaveit[d] == "" || itdidhaveit[d] == null || itdidhaveit[d] == undefined || itdidhaveit[d] == '') {
+                            break;
+                        } else if (d == itdidhaveit.length + -1) {
+                            var elementcountry = document.getElementById("rowtags0")
+                            
+                            addTxt(newsdata[a][0], newsdata[a][1], newsdata[a][2], 0, elementcountry)
+                           
+                           
+                        }
+                    }
+                }
+                itdidhaveit = []
+
+            }
+            
+        }
+
+        // this is for the rest of the rows not row0
+      
+        function sortcustombycountryrowtags() {
+            tagscountryrows = []
+            for (e = 0; e <= tags.length + -1; e++) {
+                for (f = 0; f <= countries.length + -1; f++) {
+                   // console.log("countriesf"+countries[f])
+                   // console.log("tagse"+tags[e])
+                   // console.log("e"+e)
+                    if (tags[e] == countries[f]) {
+                        break;
+                    }
+
+                    if (f == countries.length + -1 && tags[e] !== countries[f]) {
+                        tagscountryrows[tagscountryrows.length] = tags[e]
+                    }
+                    
+                }
+                
+            }
+            if (tagscountryrows.length == 0) {
+                
+            } else {
+                sortbycountriestagsrows(tagscountryrows)
+
+                // alert("188"+tagscountryrows)
+
+                var customtagsforrows = [];
+                for (a = 0; a <= newsdata.length + -1; a++) {
+                    for (b = 0; b <= newsdata[a].length + -1; b++) {
+                        for (c = 0; c <= tagscountryrows.length + -1; c++) {
+                            if (newsdata[a][b] == tagscountryrows[c]) {
+
+                                customtagsforrows[customtagsforrows.length] = tagscountryrows[c]
+                            }
+                        }
+                    }
+                    if (customtagsforrows.length == tagscountryrows.length) {
+                        for (cs = 0; cs <= countries.length + -1; cs++) {
+                            for (d = 0; d <= newsdata[a].length + -1; d++) {
+                                if (newsdata[a][d] == countries[cs]) {
+                                    var elementcountry = document.getElementById("rowcountry" + parseInt(cs));
+                                    addTxt(newsdata[a][0], newsdata[a][1], newsdata[a][2], cs, elementcountry)
+                                }
+                            }
+                        }
+                    }
+                    customtagsforrows = []
+                }
+            }
+
+           
+        }
+
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
