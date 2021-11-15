@@ -1,0 +1,95 @@
+
+* {
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+	 flex-direction: column;
+	 font-family: sans-serif;
+	 /* color: white; */
+	 text-decoration: none;
+	 margin: 0;
+	 padding: 0;
+	 background-size: 100% 100%;
+	 text-align: center;
+	 border: 2px solid purple;
+	 text-decoration: none;
+}
+
+a {
+   color:  black;
+}
+
+style, script, head {
+   display: none;
+}
+
+body {/* height: max-content; */width: 100vw;justify-content: flex-start;background-size: 100% 100%;background-position: center;background-repeat: no-repeat;/* position: fixed; */background-attachment: fixed;height: 100vh;}
+.menu1 {flex-direction: row;justify-content: space-evenly;width: 100%;height: 10%;background-color: white;position: fixed;z-index: 8;/* box-shadow: 5px 1px 10px 3px #888888; */}
+
+.menu2 {
+  position: fixed;
+  height: 10%;
+  width: 100%;
+  background-color: #252424;
+  left: 0;
+  top: 10%;
+  justify-content: space-around;
+  flex-direction: row;
+  background-color: white;
+  /* box-shadow: 2px 1px 8px 10px #888888; */
+}
+
+ .main {
+ position: absolute;
+ /* left: 0; */
+ top: 31%;
+ /* background-color: #00bcd4db; */
+ height: max-content;
+ width: 100%;
+ justify-content: flex-start;
+ min-height: 78%;
+ background-color: rgba(255, 255, 255, 0.5);
+ width: 96%;
+ }
+
+.maintxt {
+	 /* border: 2px solid #232323; */
+	 height: max-content;
+	 width: 81%;
+	 margin-top: 22px;
+	 word-break: break-word;
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+}
+
+img {
+   height: 288px;
+   width: 278px;
+ }
+
+ p {padding:  2px;/* height: 100%; *//* display: inline-block; */margin: 1px 2px;}
+
+ div { 
+   padding: 2px;
+   }
+
+   .maintxt  {
+   	 /* background-color: palegoldenrod; */
+   	 padding: 12px;
+   	 justify-content: center;
+   	 align-items: center;
+   	 margin-bottom: 42px;
+   }
+
+   .maintxt p {width: 50%;padding: 27px;background-color: white;margin: 7px;}
+
+   h1 {
+    margin: 5px;
+}
+
+.maintxt2 {display: inline-block;width: 130px;/* max-width: 195px; */height: 205px;margin: 0% 2%;background-color: white;min-width: 160px;}
+
+.column0 {height: 47%;}
+
+.column1 {height: 52%;width: 100%;padding: 0;margin: 0;border: none;}
