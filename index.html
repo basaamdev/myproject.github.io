@@ -147,11 +147,13 @@
         #coulmn1 {
     width: 22%;
     height: 100%;
+    display: none;
+    /* display: none; */
 }
         .c1r0 {
-    height: 50%;
+    height: 80%;
     width: 100%;
-    display: none;
+    /* display: none; */
 }
         .c1r1 {
     width: 100%;
@@ -166,10 +168,10 @@
         .c3r1 {width: 100%;}
         .c3r2 {width: 100%;}
 
-        #coulmn2 {width: 53%;height: 100%;flex-direction: row;}
-        .c2r0 {height: 100%;width: 50%;display: inline-block;overflow-x: hidden;overflow-y: scroll;}
+        #coulmn2 {width: 45%;height: 100%;flex-direction: row;}
+        .c2r0 {height: 100%;width: 100%;display: inline-block;overflow-x: hidden;overflow-y: scroll;}
 
-            .c2r1 {height: 100%;width: 50%;display: inline-block;overflow-x: hidden;overflow-y: scroll;}
+            .c2r1 {height: 100%;width: 100%;display: inline-block;overflow-x: hidden;overflow-y: scroll;}
             #coulmn3 {
                 height: 100%;
                 /* border: 2px solid red; */
@@ -187,9 +189,19 @@
             padding: 9px;
         }
 
-        #selectedtags {height: 50%;display: inline-block;overflow-y: scroll;width: 100%;}
+        #selectedtags {height: 52%;display: inline-block;overflow-y: scroll;width: 100%;}
 
         #selectedcountries {height: 50%;width: 100%;}
+        #ornasedgenre {}
+        .c2row0 {
+    width: 50%;
+    height: 100%;
+}
+
+        #customtagsbycountry {
+            width: 50%;
+        }
+        .c2r1row1 {width: 50%;height: 100%;}
 		</style>
 </head>
 <body>
@@ -201,34 +213,45 @@
 	   -->
     <div class="menusearch">
         <div id="coulmn2">
-            <div id="c2r0" class="c2r0"></div>
-            <div id="c2r1" class="c2r1"></div>
-        </div> 
-        <div id="coulmn1">
-            <div class="c1r0" id="elementtags">
-                <div id="selectedtags"></div>
-                <div id="selectedcountries"></div>
+          
+            <div class="c2row0">
+                <div id="c2r0" class="c2r0">
+                </div>
+                <div class="c2row1">
+                    <button id="ornasedgenre">genre + country</button>
+                </div>
             </div>
-            <!--<div class="c1r1"><input id="search" value="" /></div>-->
-            <button id="ornasedgenre">genre + country</button>
-            <button id="customtagsbycountry">custom tags</button>
-        </div>
-        <div id="coulmn3">
-            <div class="c3r1">
-                <!-- all news by country-->
-                <button id="allcountry">by country</button>
-                <!-- all news by genre-->
-                <button id="allgenre">by genre</button>
+            <div class="c2r1row1" >
+                <div class="c2r1" id="c2r1"></div>
+                <button id="customtagsbycountry">custom tags</button>
             </div>
-            <div class="c3r2">
-                <!-- all genre business politics, ignored tags plus selectected countires-->
-                
-                <!-- custom news genre tags customised by country rows with ingnored countries plus row 0 with countries-->
+            
+            </div>
+            <div id="coulmn1">
+                <div class="c1r0" id="elementtags">
+                    <div id="selectedtags"></div>
+                    <div class="column1"><button id="customtagsbycountry">custom tags</button></div>
+                    <div id="selectedcountries"></div>
+                </div>
+                <!--<div class="c1r1"><input id="search" value="" /></div>-->
+
+               
+            </div>
+            <div id="coulmn3">
+                <div class="c3r1">
+                    <!-- all news by country-->
+                    <button id="allcountry">by country</button>
+                    <!-- all news by genre-->
+                    <button id="allgenre">by genre</button>
+                </div>
+                <div class="c3r2">
+                    <!-- all genre business politics, ignored tags plus selectected countires-->
+                    <!-- custom news genre tags customised by country rows with ingnored countries plus row 0 with countries-->
 
 
+                </div>
             </div>
         </div>
-    </div>
 
 	<div id="main" class="main">
 
@@ -238,8 +261,8 @@
 
 
 
-       
-
+        var screen = "start";
+        var tagsclicked = false;
 		                                                                                                
         var newsdata = [["House prices still rising but demand set to cool", "https://www.bbc.co.uk/news/business-59174582", "https://ichef.bbci.co.uk/news/976/cpsprodpb/7435/production/_119294792_house_prices_getty.jpg", "now", "homes", "economy", "uk", "all"],
         ["The first British prime minister got the job because the King couldn’t speak English", "https://google.com", "facts.PNG", "politics", "past", "king", "all", "uk", "facts"],
@@ -293,6 +316,9 @@
         var tags = [];
         var selectedtagselement = ["economy", "business"];
 
+
+        //sorting tags out for appendchild "selectedtags"
+
         function selectedtagssort() {
          //   alert("thistags"+tags)
           //  alert("selectedtagselement" + selectedtagselement)
@@ -323,7 +349,7 @@
             }
             selectedtagselement = [];
         }
-
+        // for displaying the country tags from the clickedcountries
         function selectedcountriessort() {
             document.getElementById("selectedcountries").innerHTML = ""
             for (c = 0; c <= clickedcountries.length + -1; c++) {
@@ -334,7 +360,7 @@
             }
         }
 
-
+        //for displaying the country tags
         function countrytags() {
 
             for (c = 0; c <= countries.length + -1; c++) {
@@ -342,20 +368,33 @@
                 sc.innerText = countries[c];
                 sc.style.display = "inline-block";
                 sc.onclick = function () {
-                
-                    this.style.backgroundColor = "white"
-                    //alert(this.innerText)
-                    tags[tags.length] = this.innerText;
-                    clickedcountries[clickedcountries.length] = this.innerText;
-                  //  alert(tags)
-                    selectedtagssort()
-                    selectedcountriessort()
+                    if (this.style.backgroundColor !== "white") {
+                        this.style.backgroundColor = "white"
+                        //alert(this.innerText)
+                        tags[tags.length] = this.innerText;
+                        clickedcountries[clickedcountries.length] = this.innerText;
+                        //  alert(tags)
+                        selectedtagssort()
+                        selectedcountriessort()
+                        if (tagsclicked == false) {
+                            document.getElementById("main").innerHTML = "";
+                            sortbynewsgenre(clickedcountries);
+                            //sortallgenrebycountry()
+                            sortnormalgenrepluscountry()
+                        } else {
+                            document.getElementById("main").innerHTML = "";
+                            sortbytagsrow0()
+                            sortbyCountries2()
+                        }
+                    }
                 }
                 document.getElementById("c2r0").appendChild(sc);
             }
         }
         countrytags()
 
+
+        //for displaying the news genre tags
         function newstags() {
 
             for (t = 0; t <= newsgenre.length + -1; t++) {
@@ -363,12 +402,18 @@
                 sc.innerText = newsgenre[t];
                 sc.style.display = "inline-block";
                 sc.onclick = function () {
-                    this.style.backgroundColor = "white"
-                  //  alert(this.innerText)
-                    tags[tags.length] = this.innerText;
-                  //  alert(tags)
-                    selectedtagssort()
-                    selectedcountriessort();
+                    if (this.style.backgroundColor !== "white") {
+                        this.style.backgroundColor = "white"
+                        //  alert(this.innerText)
+                        tags[tags.length] = this.innerText;
+                        //  alert(tags)
+                        selectedtagssort()
+                        selectedcountriessort();
+                        tagsclicked = true;
+                        document.getElementById("main").innerHTML = "";
+                        sortbytagsrow0()
+                        sortbyCountries2()
+                    }
                 }
                 document.getElementById("c2r1").appendChild(sc);
             }
@@ -565,6 +610,7 @@
 
         //this function sorts out the row0 for custom tags
         function sortbytagsrow0() {
+           
             for (c = 0; c <= 0; c++) {
                 var rowcountry = document.createElement("div");
                 var rowcountryp = document.createElement("h1");
@@ -603,7 +649,8 @@
         
         //this is for row0
         function sortcustomrowtags() {
-                                                                                                               
+          
+
             for (a = 0; a <= newsdata.length + -1; a++) {
                // console.log("row" + a)
                 for (b = 3; b <= newsdata[a].length + -1; b++) {                
@@ -611,6 +658,8 @@
                        // console.log("newsdataitem"+newsdata[a][b])
                        // console.log("tags"+tags[c])
                         if (newsdata[a][b] == tags[c]) {
+                           
+
                             itdidhaveit[c] = tags[c]
                             break;
                         }
@@ -618,13 +667,14 @@
                 }
                 // console.log(itdidhaveit)
                 if (itdidhaveit.length == tags.length) {
-
+                    
                    // console.log(newsdata[a])
                    // console.log(itdidhaveit)
                     for (d = 0; d <= itdidhaveit.length + -1; d++) {
                         if (itdidhaveit[d] == "" || itdidhaveit[d] == null || itdidhaveit[d] == undefined || itdidhaveit[d] == '') {
                             break;
                         } else if (d == itdidhaveit.length + -1) {
+                           
                             var elementcountry = document.getElementById("rowtags0")
                             
                             addTxt(newsdata[a][0], newsdata[a][1], newsdata[a][2], 0, elementcountry)
