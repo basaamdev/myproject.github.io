@@ -1,8 +1,8 @@
 
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://basaamdev.github.io/myproject.github.io/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style type="text/css">
         .menusearch {
             display: flex;
@@ -295,9 +295,9 @@
             ["Joe Biden and Xi Jinping: What they want from talks", "https://www.bbc.co.uk/news/world-us-canada-59258375", "https://ichef.bbci.co.uk/news/976/cpsprodpb/D271/production/_121537835_gettyimages-453444607.jpg", "15/11/21", "bbc", "china", "america", "politics", "all", "news"],
             ["Iron ore price slump could cause $3b blackhole in Australia’s budget", "https://www.news.com.au/finance/economy/australian-economy/iron-ore-price-slump-could-cause-3b-blackhole-in-australias-budget/news-story/0e36c1f4f43f147174decaeb6e09ed54", "australiachinaeco.PNG", "November 12, 2021", "news.com.au", "australia", "trade", "china", "economy", "all"],
             ["Ominous sign in Aussie housing market", "https://www.news.com.au/finance/economy/australian-economy/will-rising-interest-rates-mean-house-prices-still-continue-to-rise/news-story/f29819e22304d552a4306590d73a8331", "https://content.api.news/v3/images/bin/68567af80e28e8a168498fa1fb0c000d?width=1024", "November 12, 2021", "news.com/au", "australia", "market", "house", "homes", "all"],
-            ["Sheikh Joaan honours athletes at QOC Sports Excellence Awards 2021", "https://thepeninsulaqatar.com/article/15/11/2021/sheikh-joaan-honours-athletes-at-qoc-sports-excellence-awards-2021", "https://thepeninsulaqatar.com/get/maximage/20211115_1636957159-983.jpeg", "15 Nov 2021 - 09:19", "thepeninsulaqatar.com", "qatar", "prince", "auhtority", "sports"],
-            ["Energy Minister meets European Commissioner for Energy", "https://thepeninsulaqatar.com/article/15/11/2021/energy-minister-meets-european-commissioner-for-energy", "https://thepeninsulaqatar.com/get/maximage/20211115_1636967460-517.jpg", " 15 Nov 2021", "thepeninsulaqatar.com", "qatar", "eu", "meet", "energy", ""],
-            ["", "", "", "", "", "", "", "", ""],
+            ["Sheikh Joaan honours athletes at QOC Sports Excellence Awards 2021", "https://thepeninsulaqatar.com/article/15/11/2021/sheikh-joaan-honours-athletes-at-qoc-sports-excellence-awards-2021", "https://thepeninsulaqatar.com/get/maximage/20211115_1636957159-983.jpeg", "15 Nov 2021 - 09:19", "thepeninsulaqatar.com", "qatar", "prince", "auhtority", "sports", "meeting", "all"],
+            ["Energy Minister meets European Commissioner for Energy", "https://thepeninsulaqatar.com/article/15/11/2021/energy-minister-meets-european-commissioner-for-energy", "https://thepeninsulaqatar.com/get/maximage/20211115_1636967460-517.jpg", " 15 Nov 2021", "thepeninsulaqatar.com", "qatar", "eu", "meeting", "energy", "all"],
+            ["Billionaire Charlie Munger praises China for being smarter than America at handling economic booms", "https://edition.cnn.com/2021/11/03/business/munger-china-economy/index.html", "16112021cnnchinanews.PNG", "November 3, 2021", "cnn", "china", "america", "economy", "all", "relations", "multinational"],
             ["", "", "", "", "", "", "", "", ""],
             ["", "", "", "", "", "", "", "", ""],
             ["", "", "", "", "", "", "", "", ""],
@@ -308,7 +308,7 @@
 
         var countries = ["world", "america", "australia", "china", "japan", "greece", "myanmar", "qatar", "spain", "uk"];
        
-		var newsgenre = ["politics", "economy", "market", "business", "science", "space", "technology", "health", "travel", "tourism", "finance", "environment", "security"];
+		var newsgenre = ["politics", "economy", "market", "business", "science", "space", "technology", "health", "travel", "tourism", "finance", "environment", "law", "meeting", "security"];
 		
         var clickedcountries = []
         var tagscountryrows = [];
@@ -376,6 +376,7 @@
                         //  alert(tags)
                         selectedtagssort()
                         selectedcountriessort()
+                        /*
                         if (tagsclicked == false) {
                             document.getElementById("main").innerHTML = "";
                             sortbynewsgenre(clickedcountries);
@@ -386,6 +387,14 @@
                             sortbytagsrow0()
                             sortbyCountries2()
                         }
+
+*/
+                        document.getElementById("main").innerHTML = "";
+                        sortbytagsrow0()
+                        sortbyCountries2()
+                        sortbynewsgenre(clickedcountries);
+                        //sortallgenrebycountry()
+                        sortnormalgenrepluscountry()
                     }
                 }
                 document.getElementById("c2r0").appendChild(sc);
@@ -413,6 +422,9 @@
                         document.getElementById("main").innerHTML = "";
                         sortbytagsrow0()
                         sortbyCountries2()
+                        sortbynewsgenre(clickedcountries);
+                        //sortallgenrebycountry()
+                        sortnormalgenrepluscountry()
                     }
                 }
                 document.getElementById("c2r1").appendChild(sc);
@@ -622,16 +634,21 @@
                 document.getElementById("main").appendChild(rowcountry)
             }
         }
-        //this is for the rest of the countries rows
+        //this is for row 0
         function sortbyCountries2() {
-            
-            
-            
+            //this is for row0
             sortcustomrowtags()
-            
+            fortherestoftherows()
+           
+        }
+
+        function fortherestoftherows() {
+            // this is not for the row 0 but the rest of the rows
             sortcustombycountryrowtags();
         }
 
+        // this is for creating the rest of the rows
+        //line 717
         function sortbycountriestagsrows(tagspara) {
             for (c = 0; c <= countries.length + -1; c++) {
                 var rowcountry = document.createElement("div");
@@ -746,6 +763,10 @@
 	</script>
 </body>
 </html>
+
+
+
+
 
 
 
